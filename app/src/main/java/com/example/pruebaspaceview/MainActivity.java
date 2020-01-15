@@ -2,8 +2,10 @@ package com.example.pruebaspaceview;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentProvider;
 import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
 
 import com.luseen.spacenavigation.SpaceItem;
 import com.luseen.spacenavigation.SpaceNavigationView;
@@ -23,6 +25,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initComp(savedInstanceState);
+    }
+
+    private void initComp(Bundle savedInstanceState) {
+
+
         SpaceNavigationView spaceNavigationView = (SpaceNavigationView) findViewById(R.id.space);
         spaceNavigationView.initWithSaveInstanceState(savedInstanceState);
 
