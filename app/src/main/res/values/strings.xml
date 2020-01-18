@@ -4,6 +4,5 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="frg_bulb_txt_prueba">Fragmento Bulb</string>
     <string name="frg_settings_txt_prueba">Fragmento Settings</string>
 </resources>

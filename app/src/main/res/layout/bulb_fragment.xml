@@ -7,16 +7,28 @@
     tools:context="ui.fragmentBulbs.BulbFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/frg_bulb_txt_prueba"
-        android:layout_width="174dp"
-        android:layout_height="27dp"
-        android:text="@string/frg_bulb_txt_prueba"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigationView"
+        android:layout_width="185dp"
+        android:layout_height="662dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/frg_bulb_lista_marcas"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.google.android.material.navigation.NavigationView>
+
+    <FrameLayout
+        android:id="@+id/frg_bulb_lista_bombillas"
+        android:layout_width="228dp"
+        android:layout_height="661dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/navigationView"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
