@@ -11,7 +11,6 @@ import com.luseen.spacenavigation.SpaceItem;
 import com.luseen.spacenavigation.SpaceNavigationView;
 import com.luseen.spacenavigation.SpaceOnClickListener;
 
-import io.realm.Realm;
 import ui.fragmentBulbs.BulbFragment;
 import ui.fragmentHome.HomeFragment;
 import ui.fragmentSettings.SettingsFragment;
@@ -44,8 +43,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initComp(Bundle savedInstanceState) {
-
-        Realm.init(ctx);
 
         SpaceNavigationView spaceNavigationView = (SpaceNavigationView) findViewById(R.id.act_main_spaceViewer);
         spaceNavigationView.initWithSaveInstanceState(savedInstanceState);

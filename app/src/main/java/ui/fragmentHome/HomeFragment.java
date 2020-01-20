@@ -1,5 +1,6 @@
 package ui.fragmentHome;
 
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
@@ -16,7 +17,6 @@ import com.example.pruebaspaceview.R;
 
 public class HomeFragment extends Fragment {
 
-    private HomeViewModel mViewModel;
 
     public static HomeFragment newInstance() {
         return new HomeFragment();
@@ -25,14 +25,16 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.home_fragment, container, false);
+
+        View view = inflater.inflate(R.layout.home_fragment, container, false);
+        initView(view);
+
+        return view;
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
-        // TODO: Use the ViewModel
+    private void initView(View view) {
+        //view.findViewById()
     }
+
 
 }
