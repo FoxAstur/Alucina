@@ -1,2 +1,2 @@
-include ':app'
+include ':app', ':yapi-1.0-all'
 rootProject.name='PruebaSpaceView'

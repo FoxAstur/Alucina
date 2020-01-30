@@ -10,6 +10,9 @@ import android.os.Bundle;
 import com.luseen.spacenavigation.SpaceItem;
 import com.luseen.spacenavigation.SpaceNavigationView;
 import com.luseen.spacenavigation.SpaceOnClickListener;
+import com.mollin.yapi.YeelightDevice;
+import com.mollin.yapi.exception.YeelightResultErrorException;
+import com.mollin.yapi.exception.YeelightSocketException;
 
 import ui.fragmentBulbs.BulbFragment;
 import ui.fragmentHome.HomeFragment;
@@ -59,10 +62,23 @@ public class MainActivity extends AppCompatActivity {
         spaceNavigationView.setSpaceOnClickListener(new SpaceOnClickListener() {
             @Override
             public void onCentreButtonClick() {
-                //PONER LO QUE QUIERO QUE HAGA EL BOTON CENTRAL
 
-                bulbCall();
+                YeelightDevice device = null;
 
+                try {
+                    device = new YeelightDevice("192.168.1.172");
+
+                    device.setPower(true);
+                    bulbCall();
+
+                } catch (YeelightSocketException e) {
+                    e.printStackTrace();
+                    System.err.println("Error al conectar con la bombilla");
+
+                } catch (YeelightResultErrorException ex){
+                    ex.printStackTrace();
+                    System.err.println("Error no se ha podido encender la bombilla");
+            }
             }
 
             @Override
