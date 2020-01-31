@@ -5,6 +5,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import com.luseen.spacenavigation.SpaceItem;
@@ -62,23 +63,16 @@ public class MainActivity extends AppCompatActivity {
         spaceNavigationView.setSpaceOnClickListener(new SpaceOnClickListener() {
             @Override
             public void onCentreButtonClick() {
+            bulbCall();
 
-                YeelightDevice device = null;
 
-                try {
-                    device = new YeelightDevice("192.168.1.172");
 
-                    device.setPower(true);
-                    bulbCall();
+            String ip ="192.168.1.68";
 
-                } catch (YeelightSocketException e) {
-                    e.printStackTrace();
-                    System.err.println("Error al conectar con la bombilla");
 
-                } catch (YeelightResultErrorException ex){
-                    ex.printStackTrace();
-                    System.err.println("Error no se ha podido encender la bombilla");
-            }
+                      new EncenderBombilla().execute(ip);
+
+
             }
 
             @Override
