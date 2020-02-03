@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.luseen.spacenavigation.SpaceItem;
 import com.luseen.spacenavigation.SpaceNavigationView;
@@ -14,6 +15,8 @@ import com.luseen.spacenavigation.SpaceOnClickListener;
 import com.mollin.yapi.YeelightDevice;
 import com.mollin.yapi.exception.YeelightResultErrorException;
 import com.mollin.yapi.exception.YeelightSocketException;
+
+import java.util.concurrent.ExecutionException;
 
 import ui.fragmentBulbs.BulbFragment;
 import ui.fragmentHome.HomeFragment;
@@ -63,18 +66,32 @@ public class MainActivity extends AppCompatActivity {
         spaceNavigationView.setSpaceOnClickListener(new SpaceOnClickListener() {
             @Override
             public void onCentreButtonClick() {
-            bulbCall();
+                bulbCall();
 
+                String ip = "192.168.1.134";
 
+                new EncenderBombilla(new EncenderBombilla.BombillaListener() {
+                    @Override
+                    public void bombilla(YeelightDevice result) {
 
-            String ip ="192.168.1.68";
+                        try {
+                            result.setPower(true);
+                        } catch(NoSuchMethodError er) {
+                            er.printStackTrace();
+                            Log.d("CACA","Mucha Caca");
+                        } catch (YeelightResultErrorException ex) { 
+                            Log.d("CACA","no se ha podido encender");
+                        } catch (YeelightSocketException e) {
+                            Log.d("CACA","no se ha podido conectar con la bomibilla para encender");
+                            e.printStackTrace();
 
+                        }
 
-                      new EncenderBombilla().execute(ip);
+                    }
+                }).execute(ip);
 
 
             }
-
             @Override
             public void onItemClick(int itemIndex, String itemName) {
 
